@@ -1,0 +1,34 @@
+body {
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "游ゴシック", YuGothic, "メイリオ", Meiryo, sans-serif;
+    font-size: 12pt;
+    background-color: #fafafa;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  input[type=text],input[type=email], textarea {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #ddd;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
