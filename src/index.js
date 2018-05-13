@@ -9,6 +9,8 @@ import {Provider} from 'react-redux';
 import React from 'react';
 import {render} from 'react-dom';
 
+import registerServiceWorker from './registerServiceWorker';
+
 import '../stylesheets/00_foundation/foundation.css';
 import '../stylesheets/00_foundation/reset.css';
 import '../stylesheets/00_foundation/loading.css';
@@ -28,3 +30,5 @@ render(
     </Provider>
   ), document.getElementById('root')
 );
+
+registerServiceWorker();
