@@ -1,0 +1,110 @@
+.p-index {
+  background: #292929;
+  height: 100%;
+  overflow: scroll;
+}
+
+.p-index__body {
+  height: calc(100vh - 80px);
+}
+
+.p-index__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 20px;
+  height: 80px;
+}
+
+.p-index__logo span {
+  display: inline-block;
+  margin-top: 23px;
+  margin-left: 10px;
+}
+
+.p-index__logo__icon {
+  display: inline-block;
+  width: 50%;
+}
+
+.p-index__video {
+  position: relative;
+  display: flex;
+  padding: 10px 5px;
+  border-top: 1px solid gray;
+}
+
+.p-index__video__right {
+  color: white;
+  margin: 0 10px;
+}
+
+.p-index__video__right > div {
+    margin: 6px 0;
+  }
+
+.p-index__video__date {
+  color: gray;
+  font-size: 12px;
+  margin-top: 2px !important;
+}
+
+.p-index__video__title {
+  font-size: 15px;
+  line-height: 120%;
+}
+
+.p-index__video__channel {
+  font-size: 13px;
+}
+
+.p-index__video__statistics {
+  display: flex;
+  align-items: center;
+}
+
+.p-index__video__statistics > div{
+  margin: 0 5px 0 2px;
+  font-size: 12px;
+}
+
+.p-index__video__rank {
+  position: absolute;
+  color: gray;
+  font-size: 60px;
+  right: 10px;
+  bottom: 5px;
+  font-weight: bold;
+  letter-spacing: -10px;
+}
+
+.p-index__video__statistics__icon {
+  fill: #e62117;
+}
+
+.p-index__search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  background-color: #e62117;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+}
+
+.p-index__search-box__input {
+  display: inline-block;
+  border: none;
+  width: 60%;
+  height: 60%;
+}
+
+.p-index__search-box__icon {
+  background-color: #e62117;
+  border-radius: 50%;
+  border: 2px solid white;
+  padding: 10px;
+}

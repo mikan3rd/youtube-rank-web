@@ -1,13 +1,18 @@
 // @flow
-import {fork, put, takeLatest, call} from 'redux-saga/effects';
+import {put, takeLatest, call} from 'redux-saga/effects';
+
 import Actions from './actions';
-import ApiClient from '../../helpers/ApiClient';
-import {type ActionType} from 'redux-actions';
+import {SearchApi} from '../../helpers/api';
 
 export default function* (): Generator<*, *, *> {
-
+  yield takeLatest(Actions.getSearchResult, getSearchResult);
 }
 
-function* signupProvsion(action: ActionType<typeof Actions.signupProvsion>) : Generator<*, *, *> {
-
+function* getSearchResult(action) : Generator<*, *, *> {
+  yield put(Actions.changeValueForKey({key: 'isLoading', value: true}));
+  const params = action.payload;
+  console.log("params:", params);
+  const response = yield call(SearchApi.get, params);
+  yield put(Actions.changeValueForKey({key: 'results', value: response.data}));
+  yield put(Actions.changeValueForKey({key: 'isLoading', value: false}));
 }

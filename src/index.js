@@ -9,6 +9,10 @@ import {Provider} from 'react-redux';
 import React from 'react';
 import {render} from 'react-dom';
 
+import '../stylesheets/00_foundation/foundation.css';
+import '../stylesheets/00_foundation/reset.css';
+import '../stylesheets/00_foundation/loading.css';
+
 const store = ConfigureStore();
 
 render(
