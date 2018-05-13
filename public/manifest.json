@@ -1,24 +1,28 @@
 {
-  "short_name": "Youtubeランキング検索",
-  "name": "Youtubeランキング検索",
+  "short_name": "YouTubeRank",
+  "name": "YouTubeランキング検索",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#001a3c",
+  "background_color": "#001a3c",
   "icons": [
     {
-      "src": "icon-1x.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "icon-2x.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "icon-4x.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icon-512w.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "512x512"
     },
@@ -27,9 +31,5 @@
       "sizes": "192x192",
       "type": "image/png"
     }
-  ],
-  "start_url": "./index.html",
-  "display": "standalone",
-  "theme_color": "#001a3c",
-  "background_color": "#001a3c"
+  ]
 }

@@ -2,12 +2,12 @@
   background: #292929;
   height: 100%;
   overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
 }
 
 .p-index__body {
   height: calc(100vh - 80px);
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 
 .p-index__logo {
