@@ -32,11 +32,11 @@
     "webpack-dev-server": "2.9.7"
   },
   "dependencies": {
-    "gh-pages": "^1.0.0",
     "axios": "^0.16.1",
     "babel-polyfill": "^6.23.0",
     "chart.js": "^2.5.0",
     "es6-promise": "^4.1.0",
+    "gh-pages": "^1.1.0",
     "immutable": "^3.8.1",
     "md5": "^2.2.1",
     "node-sass": "^4.5.3",
