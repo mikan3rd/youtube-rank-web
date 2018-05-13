@@ -1,16 +1,29 @@
-import CounterActions from './actions';
-import Index from './model';
 import {handleActions} from 'redux-actions';
+import {Record, Map} from 'immutable';
+
+import Actions from './actions';
+
+
+const IndexRecord = Record({
+  query: '',
+  params: Map({
+    query: '',
+  }),
+  results: [],
+  isLoading: false,
+});
+
+class Index extends IndexRecord {
+}
 
 
 export default handleActions({
-  [CounterActions.authToken]: (state, action) => {
-    return state.authorize();
+  [Actions.changeValueForKey]: (state, action) => {
+    const {key, value} = action.payload;
+    return state.set(key, value);
   },
-  [CounterActions.login]: (state, action) => {
-    return state.login();
-  },
-  [CounterActions.logout]: (state, action) => {
-    return new Index();
+  [Actions.changeValueOfParams]: (state, action) => {
+    const {key, value} = action.payload;
+    return state.setIn(['params', key], value);
   },
 }, new Index());

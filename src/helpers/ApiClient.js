@@ -2,8 +2,16 @@ import axios from 'axios';
 
 export default class ApiClient {
   constructor() {
-    const port = 8080;
-    const host = 'http://192.168.33.200';
+
+    let port = 3333;
+    let host = 'http://0.0.0.0';
+    // let port = null;
+    // let host = 'https://youtube-rank-api.herokuapp.com';
+
+    if (process.env.NODE_ENV === 'production') {
+      port = null;
+      host = 'https://youtube-rank-api.herokuapp.com';
+    }
     this._domain = `${host}${(port != null) ? `:${port}` : ''}`;
   }
 
