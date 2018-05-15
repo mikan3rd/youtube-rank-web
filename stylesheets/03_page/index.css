@@ -123,3 +123,13 @@
   background-color: white;
   padding: 5px 10px;
 }
+
+.p-index__side__contact__button {
+  text-align: center;
+  padding: 10px 5px;
+  background-color: white;
+}
+
+.p-index__side__contact__button__inner {
+  font-size: 12px;
+}

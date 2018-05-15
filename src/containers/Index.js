@@ -9,11 +9,11 @@ import {
   Splitter,
   SplitterContent,
   SplitterSide,
-  List,
   ListHeader,
   ListItem,
   LazyList,
   Select,
+  Button,
 } from 'react-onsenui';
 
 import {IndexActions} from '../modules/Index';
@@ -156,7 +156,6 @@ class Index extends React.Component {
       isSideOpen,
       results,
     } = index;
-    console.log(index.params.toJS());
 
     return (
       <Splitter>
@@ -198,6 +197,15 @@ class Index extends React.Component {
                   );
                 })}
               </Select>
+            </div>
+            <ListHeader>お問い合わせ</ListHeader>
+            <div className="p-index__side__contact__button">
+              <Button
+                modifier="outline"
+                onClick={() => window.open('https://marshmallow-qa.com/mikan_the_third?utm_medium=twitter&utm_source=promotion')}
+              >
+                <p className="p-index__side__contact__button__inner">開発者にメッセージを送る</p>
+              </Button>
             </div>
           </Page>
         </SplitterSide>
