@@ -3,10 +3,11 @@ import axios from 'axios';
 export default class ApiClient {
   constructor() {
 
-    let port = 3333;
-    let host = 'http://0.0.0.0';
-    // let port = null;
-    // let host = 'https://youtube-rank-api.herokuapp.com';
+    // let port = 3333;
+    // let host = 'http://0.0.0.0';
+    let port = null;
+    let host = 'https://youtube-rank-api.herokuapp.com';
+    console.log(process.env);
 
     if (process.env.NODE_ENV === 'production') {
       port = null;
