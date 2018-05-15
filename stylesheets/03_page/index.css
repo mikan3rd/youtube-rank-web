@@ -30,11 +30,15 @@
   width: 50%;
 }
 
+.p-index__video__wrapper {
+  background-color: #292929;
+  border-top: 1px solid gray;
+}
+
 .p-index__video {
   position: relative;
   display: flex;
-  padding: 10px 5px;
-  border-top: 1px solid gray;
+  background: #292929;
 }
 
 .p-index__video__right {
@@ -43,7 +47,7 @@
 }
 
 .p-index__video__right > div {
-    margin: 6px 0;
+
   }
 
 .p-index__video__date {
@@ -53,8 +57,11 @@
 }
 
 .p-index__video__title {
+  position:relative;
+  z-index: 1;
   font-size: 15px;
   line-height: 120%;
+  font-weight: bold;
 }
 
 .p-index__video__channel {
@@ -75,10 +82,11 @@
   position: absolute;
   color: gray;
   font-size: 60px;
-  right: 10px;
-  bottom: 5px;
+  right: 15px;
+  bottom: 20px;
   font-weight: bold;
-  letter-spacing: -10px;
+  letter-spacing: -5px;
+  z-index: 0;
 }
 
 .p-index__video__statistics__icon {
@@ -109,4 +117,9 @@
   border-radius: 50%;
   border: 2px solid white;
   padding: 10px;
+}
+
+.p-index__side__select {
+  background-color: white;
+  padding: 5px 10px;
 }

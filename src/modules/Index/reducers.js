@@ -8,9 +8,11 @@ const IndexRecord = Record({
   query: '',
   params: Map({
     query: '',
+    period: 'weeks',
   }),
   results: [],
   isLoading: false,
+  isSideOpen: false,
 });
 
 class Index extends IndexRecord {
