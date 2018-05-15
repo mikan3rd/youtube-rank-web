@@ -9,6 +9,7 @@ const IndexRecord = Record({
   params: Map({
     query: '',
     period: 'weeks',
+    videoCategoryId: null,
   }),
   results: [],
   isLoading: false,

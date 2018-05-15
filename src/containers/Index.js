@@ -22,6 +22,25 @@ import '../../stylesheets/03_page/index.css';
 
 Modal.setAppElement('#root');
 
+const CategoryIds = [
+  {value: 0, label: 'なし'},
+  {value: 1, label: '映画とアニメ'},
+  {value: 2, label: '自動車と乗り物'},
+  {value: 10, label: '音楽'},
+  {value: 15, label: 'ペットと動物'},
+  {value: 17, label: 'スポーツ'},
+  {value: 19, label: '旅行とイベント'},
+  {value: 20, label: 'ゲーム'},
+  {value: 22, label: 'ブログ'},
+  {value: 23, label: 'コメディー'},
+  {value: 24, label: 'エンターテイメント'},
+  {value: 25, label: 'ニュースと政治'},
+  {value: 26, label: 'ハウツーとスタイル'},
+  {value: 27, label: '教育'},
+  {value: 28, label: '科学と技術'},
+];
+
+
 const LoadingModal = (props) => {
   const {isLoading} = props;
   const customStyles = {
@@ -60,7 +79,7 @@ class Index extends React.Component {
     if (nextParams.get('query') !== params.get('query')) {
       return;
     } else if (!is(nextParams, params)) {
-      this.props.getSearchResult(params.toJS());
+      this.props.getSearchResult(nextParams.toJS());
     }
   }
 
@@ -158,7 +177,7 @@ class Index extends React.Component {
             <div className="p-index__side__select">
               <Select
                 value={params.get('period')}
-                onChange={(e) => changeValueOfParams({key: 'period', value: e.target.value})}
+                onChange={(e) => changeValueOfParams({key: 'period', value: e.target.value || null})}
               >
                 <option value="day">今日</option>
                 <option value="yesterday">昨日</option>
@@ -167,12 +186,19 @@ class Index extends React.Component {
                 <option value="all">全期間</option>
               </Select>
             </div>
-            {/* <List
-              dataSource={['今日', '昨日', '週間', '月間', '全期間']}
-              renderRow={(title) => (
-                <ListItem key={title} onClick={this.hide} tappable>{title}</ListItem>
-              )}
-            /> */}
+            <ListHeader>カテゴリー</ListHeader>
+            <div className="p-index__side__select">
+              <Select
+                value={CategoryIds.find((category) => category.value === params.get('videoCategoryId'))}
+                onChange={(e) => changeValueOfParams({key: 'videoCategoryId', value: e.target.value})}
+              >
+                {CategoryIds.map((category, index) => {
+                  return (
+                    <option key={index} value={category.value}>{category.label}</option>
+                  );
+                })}
+              </Select>
+            </div>
           </Page>
         </SplitterSide>
         <SplitterContent>
