@@ -14,6 +14,8 @@ import {
   LazyList,
   Select,
   Button,
+  Switch,
+  Icon,
 } from 'react-onsenui';
 
 import {IndexActions} from '../modules/Index';
@@ -172,6 +174,14 @@ class Index extends React.Component {
           onOpen={() => changeValueForKey({key: 'isSideOpen', value: true})}
         >
           <Page>
+            <ListHeader>フィルター</ListHeader>
+            <div className="p-index__side__switch">
+              <Switch
+                checked={params.get('channelFilter')}
+                onChange={(e) => changeValueOfParams({key: 'channelFilter', value: e.target.checked})}
+              />
+              <p>同じチャンネルを非表示</p>
+            </div>
             <ListHeader>期間</ListHeader>
             <div className="p-index__side__select">
               <Select
@@ -185,7 +195,7 @@ class Index extends React.Component {
                 <option value="all">全期間</option>
               </Select>
             </div>
-            <ListHeader>カテゴリー</ListHeader>
+            <ListHeader>カテゴリ</ListHeader>
             <div className="p-index__side__select">
               <Select
                 value={CategoryIds.find((category) => category.value === params.get('videoCategoryId'))}
@@ -227,6 +237,16 @@ class Index extends React.Component {
                   renderRow={this.renderVideoContent}
                   calculateItemHeight={() => 125}
                 />
+                {results.length === 0 &&
+                  <div className="p-index__error-message">
+                    費用削減のため、この時間は休止中です。
+                    <Icon
+                      className="p-index__md-devices-off"
+                      icon="md-devices-off"
+                      size={100}
+                    />
+                  </div>
+                }
               </div>
               <div className="p-index__search-box">
                 <input

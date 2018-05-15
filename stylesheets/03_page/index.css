@@ -133,3 +133,26 @@
 .p-index__side__contact__button__inner {
   font-size: 12px;
 }
+
+.p-index__side__switch {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  padding: 5px;
+  background-color: white;
+}
+
+.p-index__side__switch p {
+  margin-left: 5px;
+}
+
+.p-index__error-message {
+  color: white;
+  text-align: center;
+  margin: 30px;
+}
+
+.p-index__md-devices-off {
+  margin: 10px;
+  font-size: 40px;
+}

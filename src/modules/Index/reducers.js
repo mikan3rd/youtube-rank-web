@@ -10,6 +10,7 @@ const IndexRecord = Record({
     query: '',
     period: 'weeks',
     videoCategoryId: null,
+    channelFilter: true,
   }),
   results: [],
   isLoading: false,
