@@ -215,9 +215,10 @@ class Index extends React.Component {
                 modifier="outline"
                 onClick={() => window.open('https://marshmallow-qa.com/mikan_the_third?utm_medium=twitter&utm_source=promotion')}
               >
-                <p className="p-index__side__contact__button__inner">開発者にメッセージを送る</p>
+                <p className="p-index__side__contact__button__inner">作者にメッセージを送る</p>
               </Button>
             </div>
+            <ListHeader>作者に牛丼をおごる</ListHeader>
             <MyStoreCheckout />
           </Page>
         </SplitterSide>
