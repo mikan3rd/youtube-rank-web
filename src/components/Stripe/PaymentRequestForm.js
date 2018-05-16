@@ -7,13 +7,12 @@ class PaymentRequestForm extends React.Component {
 
     // For full documentation of the available paymentRequest options, see:
     // https://stripe.com/docs/stripe.js#the-payment-request-object
-    console.log("props:", props);
     const paymentRequest = props.stripe.paymentRequest({
       country: 'JP',
       currency: 'jpy',
       total: {
-        label: 'Demo total',
-        amount: 500,
+        label: '作者に牛丼をおごる',
+        amount: 390,
       },
     });
 
@@ -43,7 +42,8 @@ class PaymentRequestForm extends React.Component {
           // For more details on how to style the Payment Request Button, see:
           // https://stripe.com/docs/elements/payment-request-button#styling-the-element
           paymentRequestButton: {
-            theme: 'light',
+            type: 'donate',
+            theme: 'dark',
             height: '64px',
           },
         }}

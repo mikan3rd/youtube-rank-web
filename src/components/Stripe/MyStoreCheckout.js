@@ -7,7 +7,7 @@ import InjectedCheckoutForm from './PaymentRequestForm';
 class MyStoreCheckout extends React.Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_hAov2onJwga3U2c8qSXWTi7u">
+      <StripeProvider apiKey="pk_live_0bt7bCCqpcjtgak0mKMvNMqz">
         <Elements>
           <InjectedCheckoutForm />
         </Elements>
