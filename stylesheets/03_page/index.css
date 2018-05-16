@@ -1,6 +1,7 @@
 .p-index {
   background: #292929;
   height: 100%;
+  max-width: 600px;
 }
 
 .p-index__body {
@@ -94,6 +95,7 @@
 }
 
 .p-index__search-box {
+  max-width: 600px;
   display: flex;
   align-items: center;
   justify-content: space-around;

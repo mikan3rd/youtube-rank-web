@@ -19,6 +19,7 @@ import {
 } from 'react-onsenui';
 
 import {IndexActions} from '../modules/Index';
+import MyStoreCheckout from '../components/Stripe/MyStoreCheckout';
 
 import '../../stylesheets/03_page/index.css';
 
@@ -165,7 +166,7 @@ class Index extends React.Component {
           style={{
             boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
           }}
-          side="left"
+          side="right"
           width={200}
           collapse={true}
           swipeable={true}
@@ -217,6 +218,7 @@ class Index extends React.Component {
                 <p className="p-index__side__contact__button__inner">開発者にメッセージを送る</p>
               </Button>
             </div>
+            <MyStoreCheckout />
           </Page>
         </SplitterSide>
         <SplitterContent>
