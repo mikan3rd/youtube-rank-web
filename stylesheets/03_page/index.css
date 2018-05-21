@@ -128,9 +128,17 @@
 }
 
 .p-index__side__contact__button {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px 5px;
-  background-color: white;
+  background: white;
+  height: 110px;
+}
+
+.p-index__side__contact__button__child {
+  width: 80%;
 }
 
 .p-index__side__contact__button__inner {

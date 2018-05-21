@@ -7,12 +7,13 @@ class PaymentRequestForm extends React.Component {
 
     // For full documentation of the available paymentRequest options, see:
     // https://stripe.com/docs/stripe.js#the-payment-request-object
+    console.log(props);
     const paymentRequest = props.stripe.paymentRequest({
       country: 'JP',
       currency: 'jpy',
       total: {
         label: '作者に牛丼をおごる',
-        amount: 390,
+        amount: 380,
       },
     });
 
@@ -23,7 +24,9 @@ class PaymentRequestForm extends React.Component {
     });
 
     paymentRequest.canMakePayment().then(result => {
+      console.log("canMakePayment:", result)
       this.setState({canMakePayment: !!result});
+      this.props.changeValueForKey({key: 'canMakePayment', value: !!result});
     });
 
     this.state = {
@@ -33,12 +36,12 @@ class PaymentRequestForm extends React.Component {
   }
 
   render() {
-    console.log("canMakePayment:", this.state.canMakePayment);
     return this.state.canMakePayment ? (
       <PaymentRequestButtonElement
         paymentRequest={this.state.paymentRequest}
         className="PaymentRequestButton"
         style={{
+          margin: '5px 10px',
           // For more details on how to style the Payment Request Button, see:
           // https://stripe.com/docs/elements/payment-request-button#styling-the-element
           paymentRequestButton: {

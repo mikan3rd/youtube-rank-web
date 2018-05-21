@@ -5,7 +5,6 @@ import Actions from './actions';
 
 
 const IndexRecord = Record({
-  query: '',
   params: Map({
     query: '',
     period: 'weeks',
@@ -15,6 +14,7 @@ const IndexRecord = Record({
   results: [],
   isLoading: false,
   isSideOpen: false,
+  canMakePayment: false,
 });
 
 class Index extends IndexRecord {

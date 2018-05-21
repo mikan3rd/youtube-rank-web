@@ -151,6 +151,7 @@ class Index extends React.Component {
       getSearchResult,
       changeValueForKey,
       changeValueOfParams,
+      sendStripeToken,
     } = this.props;
 
     const {
@@ -158,6 +159,7 @@ class Index extends React.Component {
       isLoading,
       isSideOpen,
       results,
+      canMakePayment,
     } = index;
 
     return (
@@ -209,17 +211,21 @@ class Index extends React.Component {
                 })}
               </Select>
             </div>
-            <ListHeader>お問い合わせ</ListHeader>
+            <ListHeader>作者について</ListHeader>
             <div className="p-index__side__contact__button">
               <Button
+                className="p-index__side__contact__button__child"
                 modifier="outline"
                 onClick={() => window.open('https://marshmallow-qa.com/mikan_the_third?utm_medium=twitter&utm_source=promotion')}
               >
                 <p className="p-index__side__contact__button__inner">作者にメッセージを送る</p>
               </Button>
+              <MyStoreCheckout
+                canMakePayment={canMakePayment}
+                changeValueForKey={changeValueForKey}
+                sendStripeToken={sendStripeToken}
+            />
             </div>
-            <ListHeader>作者に牛丼をおごる</ListHeader>
-            <MyStoreCheckout />
           </Page>
         </SplitterSide>
         <SplitterContent>

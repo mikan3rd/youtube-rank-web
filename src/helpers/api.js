@@ -16,7 +16,22 @@ class SearchApi {
   }
 }
 
+class ChargeApi {
+
+    static async post(token) {
+      const endpoint = '/charge';
+
+      try {
+        return await client.request('POST', endpoint, token);
+      } catch (e) {
+        console.log('エラー:', e);
+        return {data: []};
+      }
+    }
+  }
+
 
 export {
   SearchApi,
+  ChargeApi,
 };
