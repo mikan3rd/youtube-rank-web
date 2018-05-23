@@ -212,7 +212,7 @@ class Index extends React.Component {
           width={200}
           collapse={true}
           swipeable={true}
-          swipeTargetWidth="20%"
+          swipeTargetWidth="35%"
           isOpen={isSideOpen}
           onClose={() => changeValueForKey({key: 'isSideOpen', value: false})}
           onOpen={() => changeValueForKey({key: 'isSideOpen', value: true})}
