@@ -29,6 +29,7 @@ const IndexRecord = Record({
   tags,
   isLoading: false,
   isSideOpen: false,
+  isOpenModal: null,
 });
 
 class Index extends IndexRecord {

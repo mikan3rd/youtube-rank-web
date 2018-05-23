@@ -1,7 +1,8 @@
 // MyStoreCheckout.js
 import React from 'react';
 import {StripeProvider, Elements} from 'react-stripe-elements';
-import PaymentRequestForm from './PaymentRequestForm';
+import CheckoutForm from './CheckoutForm';
+// import PaymentRequestForm from './PaymentRequestForm';
 
 // develop
 // const apiKey = "pk_test_hAov2onJwga3U2c8qSXWTi7u"
@@ -14,17 +15,24 @@ class MyStoreCheckout extends React.Component {
 
   render() {
     const {
+      isOpenModal,
+      changeValueForKey,
       sendStripeToken,
     } = this.props;
 
     return (
       <div style={{width: '100%', textAlign: 'center', marginTop: '10px'}}>
         <StripeProvider apiKey={apiKey}>
-            <Elements>
-            <PaymentRequestForm
-                apiKey={apiKey}
+          <Elements>
+            {/* <PaymentRequestForm
+              apiKey={apiKey}
+              sendToken={sendStripeToken}
+            /> */}
+              <CheckoutForm
+                isOpenModal={isOpenModal}
+                changeValueForKey={changeValueForKey}
                 sendToken={sendStripeToken}
-            />
+              />
             </Elements>
         </StripeProvider>
       </div>

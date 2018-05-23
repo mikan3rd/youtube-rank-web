@@ -197,6 +197,7 @@ class Index extends React.Component {
       params,
       isLoading,
       isSideOpen,
+      isOpenModal,
       results,
       tags,
     } = index;
@@ -260,6 +261,7 @@ class Index extends React.Component {
                 <p className="p-index__side__contact__button__inner">作者にメッセージを送る</p>
               </Button>
               <MyStoreCheckout
+                isOpenModal={isOpenModal}
                 changeValueForKey={changeValueForKey}
                 sendStripeToken={sendStripeToken}
             />
