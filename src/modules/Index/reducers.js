@@ -1,20 +1,34 @@
 import {handleActions} from 'redux-actions';
-import {Record, Map} from 'immutable';
+import {Record, Map, List} from 'immutable';
 
 import Actions from './actions';
 
 
+let params = Map({
+  query: '',
+  period: 'month',
+  videoCategoryId: null,
+  channelFilter: false,
+});
+const searchParamsJson = localStorage.getItem('searchParams');
+if (searchParamsJson) {
+  params = Map(JSON.parse(searchParamsJson));
+}
+
+let tags = List();
+const recommendTagsJson = localStorage.getItem('recommendTags');
+if (recommendTagsJson) {
+  const recommendTags = JSON.parse(recommendTagsJson);
+  tags = List(recommendTags.map((tag) => Map(tag)));
+}
+
+
 const IndexRecord = Record({
-  params: Map({
-    query: '',
-    period: 'weeks',
-    videoCategoryId: null,
-    channelFilter: true,
-  }),
+  params,
   results: [],
+  tags,
   isLoading: false,
   isSideOpen: false,
-  canMakePayment: false,
 });
 
 class Index extends IndexRecord {

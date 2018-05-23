@@ -14,10 +14,9 @@ class MyStoreCheckout extends React.Component {
 
   render() {
     const {
-      changeValueForKey,
-      canMakePayment,
       sendStripeToken,
     } = this.props;
+
     return (
       <div style={{width: '100%', textAlign: 'center', marginTop: '10px'}}>
         <StripeProvider apiKey={apiKey}>

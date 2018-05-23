@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Modal from 'react-modal';
 import moment from 'moment';
-import {is} from 'immutable';
+import {is, Map} from 'immutable';
 import {
   Page,
   Splitter,
@@ -72,24 +72,64 @@ const LoadingModal = (props) => {
 class Index extends React.Component {
 
   componentWillMount = () => {
-    const {index, getSearchResult} = this.props;
-    getSearchResult(index.params.toJS());
+    const {index} = this.props;
+    this.getSearchResult(index.params.toJS());
   }
 
   componentWillReceiveProps = (nextProps) => {
+    const {
+      params,
+      results,
+      tags,
+    } = this.props.index;
     const nextParams = nextProps.index.params;
-    const params = this.props.index.params;
-    if (nextParams.get('query') !== params.get('query')) {
-      return;
-    } else if (!is(nextParams, params)) {
-      this.props.getSearchResult(nextParams.toJS());
+
+    // queryの変更はここではスキップ
+    if (nextParams.get('query') === params.get('query')) {
+      // paramsにその他の変更があった場合
+      if (!is(nextParams, params)) {
+        const _params = nextParams.toJS();
+        this.getSearchResult(_params);
+      }
     }
+
+    const nextResults = nextProps.index.results;
+    if (nextParams.get('query') && results.length > 0 && !is(nextResults, results)) {
+      let newTags = tags;
+      for (const video of nextResults) {
+        if (!video.snippet.tags) {
+          continue;
+        }
+        for (const tag of video.snippet.tags) {
+          const index = newTags.findIndex((tagObj) => tagObj.get('name') === tag);
+          if (index > -1) {
+            newTags = newTags.update(index, (tagObj) => tagObj.set('count', tagObj.get('count') + 1));
+          } else {
+            newTags = newTags.push(Map({name: tag, count: 1}));
+          }
+        }
+      }
+      newTags = newTags.filter((tagObj) => tagObj.get('count') > 4);
+      newTags = newTags.sortBy((tagObj) => tagObj.get('count')).reverse();
+      console.log("newTags:", newTags.toJS());
+      this.props.changeValueForKey({key: 'tags', value: newTags});
+      localStorage.setItem('recommendTags', JSON.stringify(newTags.toJS()));
+    }
+
   }
 
   handleOnKeyPress = (e) => {
     if (e.key === 'Enter') {
-      const {index, getSearchResult} = this.props;
-      getSearchResult(index.params.toJS());
+      const {index} = this.props;
+      this.getSearchResult(index.params.toJS());
+    }
+  }
+
+  getSearchResult = (params)  => {
+    const {getSearchResult} = this.props;
+    getSearchResult(params);
+    if (params.query) {
+      localStorage.setItem('searchParams', JSON.stringify(params));
     }
   }
 
@@ -148,7 +188,6 @@ class Index extends React.Component {
   render() {
     const {
       index,
-      getSearchResult,
       changeValueForKey,
       changeValueOfParams,
       sendStripeToken,
@@ -159,7 +198,7 @@ class Index extends React.Component {
       isLoading,
       isSideOpen,
       results,
-      canMakePayment,
+      tags,
     } = index;
 
     return (
@@ -221,7 +260,6 @@ class Index extends React.Component {
                 <p className="p-index__side__contact__button__inner">作者にメッセージを送る</p>
               </Button>
               <MyStoreCheckout
-                canMakePayment={canMakePayment}
                 changeValueForKey={changeValueForKey}
                 sendStripeToken={sendStripeToken}
             />
@@ -258,30 +296,54 @@ class Index extends React.Component {
                 }
               </div>
               <div className="p-index__search-box">
-                <input
-                  className="p-index__search-box__input"
-                  value={params.get('query')}
-                  onKeyPress={this.handleOnKeyPress}
-                  onChange={(e) => changeValueOfParams({key: 'query', value: e.target.value})}
-                />
-                <svg
-                  className="p-index__search-box__icon"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  onClick={() => getSearchResult(params.toJS())}
-                >
-                  <use xlinkHref="/images/search.svg#feather-search" />
-                </svg>
-                <svg
-                  className="p-index__search-box__icon"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 24 24"
-                  onClick={() => changeValueForKey({key: 'isSideOpen', value: !isSideOpen})}
-                >
-                  <use xlinkHref="/images/settings.svg#feather-settings" />
-                </svg>
+                <div className="p-index__search-box__top">
+                  <input
+                    className="p-index__search-box__input"
+                    value={params.get('query')}
+                    onKeyPress={this.handleOnKeyPress}
+                    onChange={(e) => changeValueOfParams({key: 'query', value: e.target.value})}
+                  />
+                  <svg
+                    className="p-index__search-box__icon"
+                    width="50"
+                    height="50"
+                    viewBox="0 0 24 24"
+                    onClick={() => this.getSearchResult(params.toJS())}
+                  >
+                    <use xlinkHref="/images/search.svg#feather-search" />
+                  </svg>
+                  <svg
+                    className="p-index__search-box__icon"
+                    width="50"
+                    height="50"
+                    viewBox="0 0 24 24"
+                    onClick={() => changeValueForKey({key: 'isSideOpen', value: !isSideOpen})}
+                  >
+                    <use xlinkHref="/images/settings.svg#feather-settings" />
+                  </svg>
+                </div>
+                <div className="p-index__search-box__bottom">
+                  {tags.size  === 0 &&
+                    <div className="p-index__search-box__bottom__tag">
+                     検索するとおすすめキーワードが表示されます
+                   </div>
+                  }
+                  {tags.map((tag, index) => {
+                    const name = tag.get('name');
+                    return (
+                      <div
+                        key={index}
+                        className="p-index__search-box__bottom__tag"
+                        onClick={() => {
+                          this.getSearchResult(params.set('query', name).toJS());
+                          changeValueOfParams({key: 'query', value: name})
+                        }}
+                      >
+                        {name}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </Page>
