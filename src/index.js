@@ -1,4 +1,3 @@
-import {IndexRoute, Route, Router, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {render} from 'react-dom';
@@ -27,11 +26,7 @@ ReactGA.pageview(page);
 render(
   (
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path="/">
-          <IndexRoute components={Index}/>
-        </Route>
-      </Router>
+      <Index />
     </Provider>
   ), document.getElementById('root')
 );
