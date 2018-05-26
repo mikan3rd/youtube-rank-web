@@ -161,7 +161,7 @@ class Index extends React.Component {
                 height="15"
                 viewBox="0 0 24 24"
               >
-                <use xlinkHref="/images/play-circle.svg#feather-play-circle" />
+                <use xlinkHref="./images/play-circle.svg#feather-play-circle" />
               </svg>
               <div>
                 {result.statistics.viewCount || 'なし'}
@@ -172,7 +172,7 @@ class Index extends React.Component {
                 height="15"
                 viewBox="0 0 24 24"
               >
-                <use xlinkHref="/images/heart.svg#feather-heart" />
+                <use xlinkHref="./images/heart.svg#feather-heart" />
               </svg>
               <div>
                 {result.statistics.likeCount || 'なし'}
@@ -313,7 +313,7 @@ class Index extends React.Component {
                     viewBox="0 0 24 24"
                     onClick={() => this.getSearchResult(params.toJS())}
                   >
-                    <use xlinkHref="/images/search.svg#feather-search" />
+                    <use xlinkHref="./images/search.svg#feather-search" />
                   </svg>
                   <svg
                     className="p-index__search-box__icon"
@@ -322,7 +322,7 @@ class Index extends React.Component {
                     viewBox="0 0 24 24"
                     onClick={() => changeValueForKey({key: 'isSideOpen', value: !isSideOpen})}
                   >
-                    <use xlinkHref="/images/settings.svg#feather-settings" />
+                    <use xlinkHref="./images/settings.svg#feather-settings" />
                   </svg>
                 </div>
                 <div className="p-index__search-box__bottom">
