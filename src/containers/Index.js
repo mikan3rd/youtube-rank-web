@@ -277,7 +277,7 @@ class Index extends React.Component {
                 <div className="p-index__logo">
                   <img
                     className="p-index__logo__icon"
-                    src="/images/youtube-logo.png"
+                    src="./images/youtube-logo.png"
                     alt="YouTube"
                   />
                   <span>ランキング検索(β版)</span>
