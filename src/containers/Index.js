@@ -287,16 +287,6 @@ class Index extends React.Component {
                   renderRow={this.renderVideoContent}
                   calculateItemHeight={() => 125}
                 />
-                {results.length === 0 &&
-                  <div className="p-index__error-message">
-                    費用削減のため、この時間は休止中です。
-                    <Icon
-                      className="p-index__md-devices-off"
-                      icon="md-devices-off"
-                      size={100}
-                    />
-                  </div>
-                }
               </div>
               <div className="p-index__search-box">
                 <div className="p-index__search-box__top">
